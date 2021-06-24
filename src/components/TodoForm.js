@@ -22,10 +22,10 @@ function TodoForm(props) {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        // props.onSubmit({
-        //     id: Math.floor(Math.random() * 1000),
-        //     text: input,
-        // });
+        props.onSubmit({
+            id: Math.floor(Math.random() * 1000),
+            text: input,
+        });
 
         // Clears the input field after an item is added.
         setInput("");
