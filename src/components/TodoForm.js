@@ -11,6 +11,13 @@ function TodoForm(props) {
     // It accepts a new state value and enqueues a re - render of the component.
     const [input, setInput] = React.useState("");
 
+    // Auto focus on the text field
+    const focusRef = React.useRef(null);
+
+    React.useEffect(() => {
+        focusRef.current.focus();
+    });
+
     const changeHandler = (event) => {
         // event.target represents a DOM element
         setInput(event.target.value);
@@ -40,6 +47,7 @@ function TodoForm(props) {
                 name="text"
                 className="todo-input"
                 onChange={changeHandler}
+                ref={focusRef}
             />
             <button className="todo-button">Add</button>
         </form>
