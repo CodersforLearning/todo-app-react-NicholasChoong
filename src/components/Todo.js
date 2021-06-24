@@ -2,11 +2,23 @@ import React from "react";
 import TodoForm from "./TodoForm";
 import { MdClose, MdModeEdit } from "react-icons/md";
 
-function Todo({ todos, completeTodo, removeTodo }) {
+function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     const [edit, setEdit] = React.useState({
         id: null,
         value: "",
     });
+
+    const submitUpdate = (value) => {
+        updateTodo(edit.id, value);
+        setEdit({
+            id: null,
+            value: "",
+        });
+    };
+
+    if (edit.id) {
+        return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+    }
 
     return todos.map((todo, index) => (
         <div
@@ -22,7 +34,7 @@ function Todo({ todos, completeTodo, removeTodo }) {
                     className="delete-icon"
                 />
                 <MdModeEdit
-                    onClick={() => setEdit(todo.id)}
+                    onClick={() => setEdit({ id: todo.id, value: todo.text })}
                     className="edit-icon"
                 />
             </div>
