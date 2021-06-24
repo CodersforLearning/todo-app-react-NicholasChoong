@@ -16,6 +16,16 @@ function TodoList() {
         // console.log(newTodos);
     };
 
+    const updateTodo = (todoId, newValue) => {
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+            return;
+        }
+
+        setTodos((previous) =>
+            previous.map((item) => (item.id === todoId ? newValue : item))
+        );
+    };
+
     const completeTodo = (id) => {
         let updatedTodos = todos.map((todo) => {
             if (todo.id === id) {
@@ -31,6 +41,7 @@ function TodoList() {
         setTodos(fileteredList);
     };
 
+    // Passing in 4 arguments into Todo as it has 4 parameters.
     return (
         <div>
             <TodoForm onSubmit={addTodo} />
@@ -38,6 +49,7 @@ function TodoList() {
                 todos={todos}
                 completeTodo={completeTodo}
                 removeTodo={removeTodo}
+                updateTodo={updateTodo}
             />
         </div>
     );
