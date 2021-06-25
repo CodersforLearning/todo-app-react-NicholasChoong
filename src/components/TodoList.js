@@ -1,8 +1,9 @@
 import React from "react";
-import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 
 function TodoList() {
+    // const initialTodos = () => JSON.parse(localStorage.getItem("todos")) || [];
+    // const [todos, setTodos] = React.useState(initialTodos);
     const [todos, setTodos] = React.useState([]);
 
     const addTodo = (todo) => {
@@ -40,6 +41,18 @@ function TodoList() {
         const fileteredList = [...todos].filter((todo) => todo.id !== id);
         setTodos(fileteredList);
     };
+
+    React.useEffect(() => {
+        const items = JSON.parse(localStorage.getItem("todos"));
+        if (items) {
+            console.log(items);
+            setTodos(items);
+        }
+    }, []);
+
+    React.useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     // Passing in 4 arguments into Todo as it has 4 parameters.
     return (
