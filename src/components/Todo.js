@@ -2,14 +2,18 @@ import React from "react";
 import TodoForm from "./TodoForm";
 import { MdClose, MdModeEdit } from "react-icons/md";
 
-function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
+// { todos, completeTodo, removeTodo, updateTodo }
+// Deconstruct the props
+// Props are arguments passed into React components
+// props.<argument> to call the function or variable
+function Todo(props) {
     const [edit, setEdit] = React.useState({
         id: null,
         value: "",
     });
 
     const submitUpdate = (value) => {
-        updateTodo(edit.id, value);
+        props.updateTodo(edit.id, value);
         setEdit({
             id: null,
             value: "",
@@ -20,17 +24,17 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />;
     }
 
-    return todos.map((todo, index) => (
+    return props.todos.map((todo, index) => (
         <div
             className={todo.isComplete ? "todo-row complete" : "todo-row"}
             key={index}
         >
-            <div key={todo.id} onClick={() => completeTodo(todo.id)}>
+            <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
                 {todo.text}
             </div>
             <div className="icons">
                 <MdClose
-                    onClick={() => removeTodo(todo.id)}
+                    onClick={() => props.removeTodo(todo.id)}
                     className="delete-icon"
                 />
                 <MdModeEdit
