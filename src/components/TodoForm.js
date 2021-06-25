@@ -42,14 +42,16 @@ function TodoForm(props) {
         <form className="todo-form" onSubmit={submitHandler}>
             <input
                 type="text"
-                placeholder="Add a todo"
+                placeholder={props.edit ? "Update todo" : "Add a todo"}
                 value={input}
                 name="text"
                 className="todo-input"
                 onChange={changeHandler}
                 ref={focusRef}
             />
-            <button className="todo-button">Add</button>
+            <button className="todo-button">
+                {props.edit ? "Update" : "Add"}
+            </button>
         </form>
     );
 }
