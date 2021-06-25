@@ -1,7 +1,7 @@
 import React from "react";
 
 function TodoForm(props) {
-    // input is the vale of the state.
+    // input is the value of the state.
     // setInput is a function that updates the value of the state.
     // ! const [state, setState] = useState(initialState);
     // Returns a stateful value, and a function to update it.
