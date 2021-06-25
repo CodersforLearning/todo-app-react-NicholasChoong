@@ -48,7 +48,7 @@ function TodoForm(props) {
                 placeholder={props.edit ? "Update todo" : "Add a todo"}
                 value={input}
                 name="text"
-                className="todo-input"
+                className={props.edit ? "todo-input edit" : "todo-input"}
                 onChange={changeHandler}
                 ref={focusRef}
             />

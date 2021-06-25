@@ -24,26 +24,38 @@ function Todo(props) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />;
     }
 
-    return props.todos.map((todo, index) => (
-        <div
-            className={todo.isComplete ? "todo-row complete" : "todo-row"}
-            key={index}
-        >
-            <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
-                {todo.text}
-            </div>
-            <div className="icons">
-                <MdClose
-                    onClick={() => props.removeTodo(todo.id)}
-                    className="delete-icon"
-                />
-                <MdModeEdit
-                    onClick={() => setEdit({ id: todo.id, value: todo.text })}
-                    className="edit-icon"
-                />
-            </div>
+    return (
+        <div>
+            <TodoForm onSubmit={props.onSubmit} />
+            {props.todos.map((todo, index) => (
+                <div
+                    className={
+                        todo.isComplete ? "todo-row complete" : "todo-row"
+                    }
+                    key={index}
+                >
+                    <div
+                        key={todo.id}
+                        onClick={() => props.completeTodo(todo.id)}
+                    >
+                        {todo.text}
+                    </div>
+                    <div className="icons">
+                        <MdClose
+                            onClick={() => props.removeTodo(todo.id)}
+                            className="delete-icon"
+                        />
+                        <MdModeEdit
+                            onClick={() =>
+                                setEdit({ id: todo.id, value: todo.text })
+                            }
+                            className="edit-icon"
+                        />
+                    </div>
+                </div>
+            ))}
         </div>
-    ));
+    );
 }
 
 export default Todo;

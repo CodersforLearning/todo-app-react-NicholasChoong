@@ -44,8 +44,8 @@ function TodoList() {
     // Passing in 4 arguments into Todo as it has 4 parameters.
     return (
         <div>
-            <TodoForm onSubmit={addTodo} />
             <Todo
+                onSubmit={addTodo}
                 todos={todos}
                 completeTodo={completeTodo}
                 removeTodo={removeTodo}
