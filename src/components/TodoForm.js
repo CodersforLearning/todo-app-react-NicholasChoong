@@ -8,8 +8,11 @@ function TodoForm(props) {
     // During the initial render, the returned state (state) is the same as
     // the value passed as the first argument(initialState).
     // The setState function is used to update the state.
-    // It accepts a new state value and enqueues a re - render of the component.
-    const [input, setInput] = React.useState("");
+    // It accepts a new state value and enqueues a re-render of the component.
+    const [input, setInput] = React.useState(
+        // auto fills old value into the text field if available
+        props.edit ? props.edit.value : ""
+    );
 
     // Auto focus on the text field
     const focusRef = React.useRef(null);
