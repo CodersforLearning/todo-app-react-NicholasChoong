@@ -37,19 +37,18 @@ function Todo(props) {
                     <div
                         key={todo.id}
                         onClick={() => props.completeTodo(todo.id)}
-                    >
-                        {todo.text}
-                    </div>
+                    ></div>
+                    {todo.text}
                     <div className="icons">
-                        <MdClose
-                            onClick={() => props.removeTodo(todo.id)}
-                            className="delete-icon"
-                        />
                         <MdModeEdit
                             onClick={() =>
                                 setEdit({ id: todo.id, value: todo.text })
                             }
                             className="edit-icon"
+                        />
+                        <MdClose
+                            onClick={() => props.removeTodo(todo.id)}
+                            className="delete-icon"
                         />
                     </div>
                 </div>
