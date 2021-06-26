@@ -48,11 +48,11 @@ function TodoList() {
             console.log(items);
             setTodos(items);
         }
-    }, []);
+    }, []); // The empty array never changes, so it doesnt trigger the function after calling it once.
 
     React.useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
-    }, [todos]);
+    }, [todos]); // Triggers the function, every time the todos array changes.
 
     // Passing in 4 arguments into Todo as it has 4 parameters.
     return (
