@@ -6,6 +6,7 @@ import { MdClose, MdModeEdit } from "react-icons/md";
 // Deconstruct the props
 // Props are arguments passed into React components
 // props.<argument> to call the function or variable
+// Test
 const Todo = (props) => {
     // Hooks should always be at the top level
     const [edit, setEdit] = React.useState({
