@@ -17,6 +17,8 @@ const TodoForm = (props) => {
     // Auto focus on the text field
     const focusRef = React.useRef(null);
 
+    //TEST
+
     React.useEffect(() => {
         focusRef.current.focus();
     });
