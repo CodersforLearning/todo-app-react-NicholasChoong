@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Todo from "./Todo";
 
 const TodoList = () => {
     // const initialTodos = () => JSON.parse(localStorage.getItem("todos")) || [];
-    // const [todos, setTodos] = React.useState(initialTodos);
-    const [todos, setTodos] = React.useState([]);
+    // const [todos, setTodos] = useState(initialTodos);
+    const [todos, setTodos] = useState([]);
+
+    useEffect(() => {
+        const items = JSON.parse(localStorage.getItem("todos"));
+        if (items) {
+            console.log(items);
+            setTodos(items);
+        }
+    }, []); // The empty array never changes, so it doesnt trigger the function after calling it once.
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]); // Triggers the function, every time the todos array changes.
 
     const addTodo = (todo) => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -41,18 +53,6 @@ const TodoList = () => {
         const fileteredList = [...todos].filter((todo) => todo.id !== id);
         setTodos(fileteredList);
     };
-
-    React.useEffect(() => {
-        const items = JSON.parse(localStorage.getItem("todos"));
-        if (items) {
-            console.log(items);
-            setTodos(items);
-        }
-    }, []); // The empty array never changes, so it doesnt trigger the function after calling it once.
-
-    React.useEffect(() => {
-        localStorage.setItem("todos", JSON.stringify(todos));
-    }, [todos]); // Triggers the function, every time the todos array changes.
 
     // Passing in 4 arguments into Todo as it has 4 parameters.
     return (
