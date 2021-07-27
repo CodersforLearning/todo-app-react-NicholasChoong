@@ -17,7 +17,7 @@ const TodoForm = (props) => {
     // Auto focus on the text field
     const focusRef = React.useRef(null);
 
-    //TEST
+    //TESTs
 
     React.useEffect(() => {
         focusRef.current.focus();
@@ -27,6 +27,8 @@ const TodoForm = (props) => {
         // event.target represents a DOM element
         setInput(event.target.value);
     };
+
+    // Test
 
     // Submit button sends the form and refreshes the page,
     // so this handler is used to prevent it from submitting the form,
