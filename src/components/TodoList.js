@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 
-function TodoList() {
+const TodoList = () => {
     // const initialTodos = () => JSON.parse(localStorage.getItem("todos")) || [];
     // const [todos, setTodos] = React.useState(initialTodos);
     const [todos, setTodos] = React.useState([]);
@@ -66,6 +66,6 @@ function TodoList() {
             />
         </div>
     );
-}
+};
 
 export default TodoList;

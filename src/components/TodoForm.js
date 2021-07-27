@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoForm(props) {
+const TodoForm = (props) => {
     // input is the value of the state.
     // setInput is a function that updates the value of the state.
     // ! const [state, setState] = useState(initialState);
@@ -57,6 +57,6 @@ function TodoForm(props) {
             </button>
         </form>
     );
-}
+};
 
 export default TodoForm;

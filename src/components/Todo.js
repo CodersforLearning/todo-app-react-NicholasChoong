@@ -6,7 +6,7 @@ import { MdClose, MdModeEdit } from "react-icons/md";
 // Deconstruct the props
 // Props are arguments passed into React components
 // props.<argument> to call the function or variable
-function Todo(props) {
+const Todo = (props) => {
     const [edit, setEdit] = React.useState({
         id: null,
         value: "",
@@ -55,6 +55,6 @@ function Todo(props) {
             ))}
         </div>
     );
-}
+};
 
 export default Todo;
